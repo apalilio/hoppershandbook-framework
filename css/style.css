@@ -676,6 +676,21 @@ section {
 }
 
 
+/* SIMPLE CARD */
+.centered-card-group {
+
+    display: flex;
+    justify-content: center;
+    gap: var(--unit-small);
+    
+    .centered-card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: var(--unit-small);
+        min-width: 233px;
+    }
+}
+
 /* ---------ANIMATION----------- */
 
 /*  ADD SUPPORT FOR SMOOTH SCROOL */
