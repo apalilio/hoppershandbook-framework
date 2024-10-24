@@ -26,3 +26,32 @@ toggleMenuLinks.forEach((el) => {
     toggleMenu.setAttribute('data-menustate','closed');
   }
 });
+
+
+
+// ONSCROLL ANIMATION
+// CHANGE ACTIVE STATE FOR ALL ELEMENTS WITH .observe- me CLASS
+const myobserver = new IntersectionObserver((enteries) => {
+  
+  
+  // logo through all enteries and do something 
+  enteries.forEach((entry) => {
+    
+    // if each is in view, set it to active, else innactive
+    if (entry.isIntersecting) {
+      entry.target.setAttribute("data-viewstate", "active");
+    } else {
+      entry.target.setAttribute("data-viewstate", "inactive");
+    };
+    
+  });
+  
+});
+
+const mytargets = document.querySelectorAll('.observe-me');
+mytargets.forEach((el) => {
+     // stuff happening
+    myobserver.observe(el);
+  
+  
+});

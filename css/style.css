@@ -34,6 +34,7 @@ CSS TABLE OF CONTENTS
 
 # ANIMATION 
     # SMOOTH SCROLLING 
+    # ONSCROLL TRIGGERED ANIMATION
 
 
 # CUSTOM STYLING 
@@ -693,8 +694,41 @@ section {
 
 /* ---------ANIMATION----------- */
 
-/*  ADD SUPPORT FOR SMOOTH SCROOL */
+/*  ENABLE NATIVE SMOOTH SCROOL */
 
 html {
     scroll-behavior: smooth;
+}
+
+/* ONSCROLL TRIGGRED ANIMATION */
+.observe-me {
+    opacity: 0;
+    transition: all 3s ease-out .5s;
+
+    &[data-viewstate="active"] {
+        opacity: 1;
+    }
+}
+
+.animate-from-upperleft {
+    translate: -20px -20px;
+    &[data-viewstate="active"] {
+        translate: 0 0;
+    }
+}
+
+.animate-from-lowerright {
+    translate: 20px 20px;
+    &[data-viewstate="active"] {
+        translate: 0 0;
+    }
+}
+
+
+/* ---------CUSTOM STYLING----------- */
+
+
+/* CUSTOM COLOR SECTIONS */
+.bg-lightgrey {
+    background-color: #efefef;
 }
