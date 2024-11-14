@@ -732,3 +732,117 @@ html {
 .bg-lightgrey {
     background-color: #efefef;
 }
+
+
+/* STYLING */
+
+:root {
+    --info-card-width: 300px;
+    --info-card-height: 400px;
+    --card-border-radius: 10px;
+  }
+  
+  .section-heading-centered {
+    text-align: center;
+  }
+  
+  /* OK TO USE WIDTH HERE BECAUSE IT WORKS WELL ON A BIG SCREEN. WE'RE SET TO FLEX ON A BIG SCREEN, AND FLEX NEEDS WIDTH, NOT MAX-WIDTH. */
+  .flip-card {
+    background-color: transparent;
+    width: var(--info-card-width);
+    height: var(--info-card-height);
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    margin: 1em;
+    
+    img {
+      border-radius: var(--card-border-radius);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden; /* PREVENTS REVERSE IMAGE FROM SHOWING UP ON BACKSIDE */
+  }
+  
+  .flip-card-back {
+    background-color: gray;
+    color: white;
+    transform: rotateY(180deg);
+    border-radius: var(--card-border-radius);
+  }
+  
+  /* WE USE MAX-WIDTH HERE TO MAKE THE CONTENT INSIDE THIS DIV RESPONSIVE, I.E., THE IMAGE */
+  .frontside-content {
+    color: black;
+    border-radius: var(--card-border-radius);
+    max-width: var(--info-card-width);
+    height: var(--info-card-height);
+    /* SETTING THIS EMPTY PLACEHOLDER DIV TO RELATIVE SO THAT THE SUBSEQUENT THE H3 CAN BE ABSOLUTE POSITIONED TO THIS PARENT DIV. */
+    position: relative;
+    
+    h3 {
+      position: absolute;
+      bottom: 0%;
+      width: 100%;
+      text-align: center;
+      color: white;
+    }
+    
+  }
+  
+  .backside-content * {
+    padding: 30px;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* normally I wouldn't need a media query since I'm using flex on a large screen, but because of the way flip cards work, I need to do a media query to switch to block */
+  
+  @media (max-width: 767px) {
+    .cards {
+      display: block;
+    }
+    /*  or can I do display: flex, and add flex-wrap: wrap? normally I wouldn't even need to use a media query since I'm using flex, but because of the way my images are, I need to use block for the media query */
+  
+    .flip-card {
+      width: auto;
+      max-width: var(--info-card-width);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  /* FOR CODEPEN PURPOSES ONLY. THIS MIGHT ALREADY EXIST IN MY FRAMEWORK CSS */
+  * {
+    box-sizing: border-box;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
