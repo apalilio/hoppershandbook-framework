@@ -866,6 +866,7 @@ h2 {
     box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
     overflow: hidden; /* otherwise header image won't respect rounded corners */
     background: white;
+    transform: translate(-50% -50%);
     transition: all .5s ease; /* back to normal */
 }
 
@@ -921,4 +922,8 @@ h2 {
     background-color: rgb(0, 0, 0);
     color: white;
     transform: rotateY(-180deg);
+
 }
+
+
+
